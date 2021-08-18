@@ -81,10 +81,20 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,122,134,1) 55%, rg
     height: fit-content;
     vertical-align: center;
 }
-.avatar{
-    height: 50px;
+.avatarLetter{
     width: 50px;
     border-radius: 50%;
+    background-color: crimson;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px 0 8px 0;
+    color: white;
+    font-size: 30px;
+}
+.avatar{
+    width: fit-content;
+    height: fit-content;
+
 }
 .own{
     flex-direction: row-reverse;
@@ -92,4 +102,13 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,122,134,1) 55%, rg
 }
 .own .messageText{
     background-color:rgb(190, 47, 114);
+}
+.memName{
+    color: white;
+    font-size: 23px;
+    padding-left: 10px;
+}
+.memNamesTitle{
+    margin-bottom: 0;
+    padding: 5px 0 0 10px;
 }

@@ -9,12 +9,17 @@ auths = {}
 room = Room()
 class Chat(Resource):
     @cross_origin(origin='*',headers=['Content-Type','Authorization'])
-    def get(self):
-        messages = {id:msg.get() for id,msg in enumerate(room.messages)}
-        return messages
+    def get(self,opt):
+        if opt == "getmsgs":
+            messages = {id:msg.get() for id,msg in enumerate(room.messages)}
+            return messages
+        elif opt == "getmems":
+            members = {id:mem.get() for id,mem in enumerate(room.get_members())}
+            return members
+
         pass
     @cross_origin(origin='*',headers=['Content-Type','Authorization'])
-    def post(self):
+    def post(self,opt):
         data = json.loads(request.get_data().decode("utf-8"))
         msg = data["msg"]
         src = data["src"]
@@ -22,8 +27,6 @@ class Chat(Resource):
         room.messages.append(message)
         return data["msg"]
         pass
-    def options(self):
-        return "200"
 class JoinRoom(Resource):
     @cross_origin(origin='*',headers=['Content-Type','Authorization'])
     def post(self):
@@ -55,7 +58,7 @@ class JoinRoom(Resource):
                 return "200"
         return "403"
         
-api.add_resource(Chat,"/chat")
+api.add_resource(Chat,"/chat/<string:opt>")
 api.add_resource(JoinRoom,"/room")
 
 

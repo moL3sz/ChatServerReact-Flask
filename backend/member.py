@@ -4,3 +4,5 @@ class Member:
         self.name = name
     def __repr__(self):
         return f"<{self.id} -> {self.name}>"
+    def get(self):
+        return {"id":self.id,"name":self.name}
